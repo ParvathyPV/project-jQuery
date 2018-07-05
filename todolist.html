@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+del{
+  margin-left:55px;
+}
+ol li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px  ;
+  background: #eee;
+  font-size: 18px;
+}
+
+ol li:hover {
+  background: #ddd;
+}
+
+.header {
+  background-color: #bbb;
+  padding: 30px ;
+  color: black;
+  text-align: center;
+}
+
+
+.header:after {
+  content: "";
+  display: flex;
+  clear: both;
+}
+
+
+input {
+  border: 1px solid #d8dee2 ;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+#button {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+ }
+
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<div id="blank" style="color:#bbb;font-size:2em;text-align: center"></div>
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">Things To Do List</h2>
+  <input type="text" name="myInput" ">
+  <button id="button">Add</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+          $(document).ready(function(){
+    $("#button").click(function(){
+       var text=$('input[name=myInput]').val();
+  if (text.length==0) {
+                    $("#blank").html("enter the task");
+                }
+                else{
+        $('ol').append('<li>'+text+"<button  class='delete ,btn-group pull-right' >Delete</button>"+'</li>');
+}
+      });
+    $(".list_of_items").on("click","button.delete",function(){
+      $(this).parent("li").remove();
+
+    });
+    
+  });
+
+
+    </script>
+ 
+<ol class="list-group list_of_items" >
+
+</ol>
+
+
+</body>
+</html>
